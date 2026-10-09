@@ -26,8 +26,13 @@ header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 .logo{font:700 1.5rem system-ui,sans-serif;color:var(--brand);text-decoration:none;letter-spacing:.5px}
 nav a{margin-right:16px;text-decoration:none;font-size:.95rem;color:var(--ink)}
 nav a:hover{color:var(--brand)}
+.referral-cta{display:inline-block;padding:13px 18px;border:2px solid var(--accent);border-radius:8px;background:var(--brand);color:#fff;text-decoration:none;font:700 1rem system-ui,sans-serif;white-space:nowrap;box-shadow:0 8px 22px rgba(166,58,28,.28);transition:transform .2s,box-shadow .2s}
+.referral-cta:hover{color:#fff;transform:translateY(-2px);box-shadow:0 12px 28px rgba(166,58,28,.36)}
+.referral-cta:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hero-logo .referral-cta{display:block;width:max-content;max-width:100%;margin:0 0 16px auto;white-space:normal;text-align:center}
 .page{display:none}.page.active{display:block}main{min-height:65vh}nav a.on{color:var(--brand);font-weight:700;border-bottom:2px solid var(--accent)}
 .eyebrow{font:600 .8rem system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.eyebrow-lg{font-size:1.15rem}
 .hero .wrap{position:relative}.hero h1{max-width:760px}
 .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.pills span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font:.85rem system-ui,sans-serif}
 .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:0;list-style:none}
@@ -35,10 +40,16 @@ nav a:hover{color:var(--brand)}
 .steps li:before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;font:700 1rem system-ui;margin-bottom:10px}
 .steps b{font-family:system-ui,sans-serif}
 .band{background:var(--brand);color:#fff;text-align:center;padding:52px 0}.band h2{color:#fff;margin:0 0 10px}.band .btn{background:#fff;color:var(--brand)}
-.tl{border-left:3px solid var(--accent);padding-left:20px;margin:16px 0}.tl div{margin-bottom:16px}.tl b{font-family:system-ui,sans-serif;color:var(--brand)}
+.tl{border-left:3px solid var(--accent);padding-left:22px;margin:20px 0 28px}
+.tl>div{position:relative;margin:0 0 18px;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 18px rgba(42,31,26,.05)}
+.tl-date{display:block;margin-bottom:5px;font:700 .72rem system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.tl b{display:block;margin-bottom:5px;font:700 1.05rem system-ui,sans-serif;color:var(--brand)}
+.tl p{margin:0;color:var(--muted)}
 .card a.more{display:inline-block;margin-top:10px;font:600 .9rem system-ui,sans-serif}
 .lead{font-size:1.15rem;color:var(--muted);max-width:720px}
 h3.sub{font-size:1.2rem;margin:28px 0 10px;color:var(--ink)}
+.form-status{display:inline-block;margin-top:12px;padding:5px 10px;border-radius:999px;background:var(--soft);color:var(--muted);font:600 .78rem system-ui,sans-serif}
+.service-status{display:inline-block;margin-top:12px;padding:5px 10px;border-radius:999px;background:var(--accent);color:#2a1f1a;font:700 .78rem system-ui,sans-serif}
 .hero{background:linear-gradient(135deg,var(--soft),var(--bg));padding:96px 0 90px}
 .hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin:0 0 16px;color:var(--brand)}
 .hero p{max-width:640px;font-size:1.15rem;color:var(--muted)}
@@ -58,6 +69,24 @@ th{background:var(--brand);color:#fff}
 .note{font-size:.9rem;color:var(--muted);border-left:4px solid var(--accent);padding:6px 14px;margin-top:16px}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
 
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px}
+.gphoto{margin:0;aspect-ratio:4/3;border-radius:14px;background:linear-gradient(135deg,var(--soft),var(--line));border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center;transition:transform .3s,box-shadow .3s;padding:0;cursor:pointer;font:inherit}
+.gphoto:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(166,58,28,.14)}
+.gphoto span{font-size:2.2rem;opacity:.55}
+.lightbox{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;background:rgba(20,14,10,.82);padding:20px}
+.lightbox.open{display:flex}
+.lightbox-inner{position:relative;max-width:min(90vw,900px);max-height:85vh;display:grid;place-items:center}
+.lb-img{max-width:100%;max-height:85vh;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.4);background:var(--card)}
+.lb-btn{position:absolute;border:0;background:rgba(42,31,26,.68);color:#fff;border-radius:50%;width:42px;height:42px;font-size:1.3rem;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.lb-btn:hover{background:var(--brand)}
+.lb-close{top:-18px;right:-18px}
+.lb-prev{left:-21px;top:50%;transform:translateY(-50%)}
+.lb-next{right:-21px;top:50%;transform:translateY(-50%)}
+.lb-dots{position:absolute;bottom:-34px;left:0;right:0;display:flex;justify-content:center;gap:8px}
+.lb-dot{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:transform .2s,background .2s}
+.lb-dot.active{background:#fff;transform:scale(1.25)}
+@media(max-width:600px){.lb-prev{left:6px}.lb-next{right:6px}.lb-close{top:6px;right:6px}}
+
 .logo-img{display:block;width:84px;height:50px;border-radius:8px;background:var(--logo) center/cover no-repeat;transition:transform .3s}
 .logo:hover .logo-img{transform:scale(1.06) rotate(-1deg)}
 .logo-img.big{width:100%;height:auto;aspect-ratio:580/344;border-radius:22px;box-shadow:0 24px 60px rgba(166,58,28,.28)}
@@ -72,28 +101,31 @@ header{transition:box-shadow .3s}header.stuck{box-shadow:0 6px 24px rgba(0,0,0,.
 @keyframes float{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-14px) rotate(.6deg)}}
 @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pageIn{from{opacity:0;transform:translate3d(0,18px,0) scale(.995)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
 @keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
-.page.active{animation:pageIn .5s ease both}
+.page.active{animation:pageIn .62s cubic-bezier(.22,1,.36,1) both}
 .hero-text>*{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 .hero-text>*:nth-child(2){animation-delay:.12s}.hero-text>*:nth-child(3){animation-delay:.24s}.hero-text>*:nth-child(4){animation-delay:.36s}.hero-text>*:nth-child(5){animation-delay:.44s}.hero-text>*:nth-child(6){animation-delay:.52s}
 .pills span{animation:pop .5s both}.pills span:nth-child(1){animation-delay:.7s}.pills span:nth-child(2){animation-delay:.8s}.pills span:nth-child(3){animation-delay:.9s}.pills span:nth-child(4){animation-delay:1s}.pills span:nth-child(5){animation-delay:1.1s}
 .btn{transition:transform .25s,box-shadow .25s}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(166,58,28,.3)}
+.btn:active,.referral-cta:active{transform:scale(.97)}
 .card,.steps li{transition:transform .3s,box-shadow .3s,border-color .3s}
 .card:hover,.steps li:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(166,58,28,.14);border-color:var(--accent)}
 .card a.more{transition:letter-spacing .25s}.card a.more:hover{letter-spacing:.04em}
-html.js .rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-html.js .rev.in{opacity:1;transform:none}
+html.js .rev{opacity:0;transform:translate3d(0,26px,0) scale(.985);filter:blur(5px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1),filter .65s ease}
+html.js .rev.in{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
 .steps li:before{transition:transform .4s}.steps li:hover:before{transform:scale(1.15) rotate(8deg)}
-.tl{position:relative}.tl div{position:relative}.tl div:before{content:"";position:absolute;left:-29px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--soft)}
+.tl{position:relative}.tl>div:before{content:"";position:absolute;left:-31px;top:22px;width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--soft)}
+.tl>div.in:before{animation:timelinePulse .9s ease-out}
+@keyframes timelinePulse{50%{box-shadow:0 0 0 8px rgba(242,140,30,0)}}
 .band{background:linear-gradient(120deg,var(--brand),#d4571e,var(--accent));background-size:200% 200%;animation:shift 10s ease infinite}
 @keyframes shift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
 tr{transition:background .2s}tbody tr:hover td,tr:hover td{background:var(--soft)}
-@media(prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important}html.js .rev{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important}html.js .rev{opacity:1;transform:none;filter:none}}
 
 #prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--brand));transform:scaleX(0);transform-origin:0 50%;z-index:60}
 #curtain{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--brand));transform:translateY(100%);pointer-events:none}
-#curtain span{font:italic 700 clamp(3rem,10vw,6rem) Georgia,serif;color:#fff;letter-spacing:.02em}
+#curtain span{font:italic 700 clamp(1.6rem,6vw,4rem) Georgia,serif;color:#fff;letter-spacing:.02em;text-align:center;padding:0 1rem}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-right:.22em}
 .w>span{display:inline-block;transform:translateY(115%);animation:wordUp .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*70ms + .15s)}
 @keyframes wordUp{to{transform:none}}
@@ -121,41 +153,73 @@ tr{transition:background .2s}tbody tr:hover td,tr:hover td{background:var(--soft
 body.home .topbar{display:block;animation:pageIn .5s both}
 .topbar .wrap{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:4px 22px;padding-top:6px;padding-bottom:6px}
 .topbar a{color:#fff;text-decoration:none;transition:opacity .2s}.topbar a:hover{opacity:.8;text-decoration:underline}
+
+.dropdown{position:relative;display:inline-block;margin-right:16px}
+.dropbtn{background:none;border:0;padding:0;margin:0;font:inherit;font-size:.95rem;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.dropbtn:hover{color:var(--brand)}
+.care{font-size:.7em;transition:transform .2s}
+.dropdown.open .care,.dropdown:hover .care,.dropdown:focus-within .care{transform:rotate(180deg)}
+.dropdown-content{position:absolute;top:100%;left:0;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 44px rgba(0,0,0,.16);padding:14px;min-width:300px;display:none;flex-direction:column;gap:4px;z-index:10}
+.dd-label{margin:0 8px 6px;font:600 .72rem system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.dropdown-content a{margin:0;padding:0;text-decoration:none;font-size:.95rem}
+.dd-item{display:flex;gap:14px;align-items:flex-start;padding:12px;border-radius:12px;white-space:normal;color:var(--ink)}
+.dd-item:hover{background:var(--soft)}
+.dd-ico{flex:0 0 auto;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--soft);font-size:1.2rem}
+.dd-item:hover .dd-ico{background:var(--card)}
+.dd-text{display:flex;flex-direction:column;gap:3px}
+.dd-text b{font:700 .97rem system-ui,sans-serif;color:var(--ink)}
+.dd-item:hover .dd-text b{color:var(--brand)}
+.dd-text small{font:400 .82rem/1.35 system-ui,sans-serif;color:var(--muted)}
+.dropdown:hover .dropdown-content,.dropdown:focus-within .dropdown-content,.dropdown.open .dropdown-content{display:flex}
+@media(max-width:420px){.dropdown-content{min-width:calc(100vw - 56px);left:auto;right:0}}
 </style>
 </head>
 <body>
-<div id="prog"></div><div id="curtain" aria-hidden="true"><span>Shifa</span></div>
-<header><div class="topbar"><div class="wrap"><a href="tel:07533495288">📞 07533 495 288</a><a href="mailto:info.shifawoking@gmail.com">✉️ info.shifawoking@gmail.com</a></div></div>
+<div id="prog"></div><div id="curtain" aria-hidden="true"><span>Shifa Network CIC</span></div>
+<header><div class="topbar"><div class="wrap"><a href="tel:07533495288">📞 07533 495 288</a><a href="tel:07741308166">📞 07741 308 166</a><a href="mailto:info.shifawoking@gmail.com">✉️ info.shifawoking@gmail.com</a></div></div>
 <div class="wrap">
 <a class="logo" href="#home" aria-label="Shifa home"><span class="logo-img" role="img" aria-label="Shifa – Ethnically Diverse Women's Wellbeing Project"></span></a>
-<nav><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#timetable">Timetable</a><a href="#partners">Partners</a><a href="#contact">Contact</a></nav>
+<nav><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#timetable">Timetable</a><a href="#contact">Contact</a><a href="#testimonials">Testimonials</a><div class="dropdown"><button class="dropbtn" type="button" aria-haspopup="true" aria-expanded="false">Get Involved <span class="care" aria-hidden="true">▾</span></button><div class="dropdown-content"><p class="dd-label">Ways to help</p><a href="#donate" class="dd-item"><span class="dd-ico" aria-hidden="true">💛</span><span class="dd-text"><b>Donate</b><small>Help fund drop-ins, classes and advocacy support</small></span></a><a href="#volunteer" class="dd-item"><span class="dd-ico" aria-hidden="true">🤲</span><span class="dd-text"><b>Volunteer</b><small>Share your time and skills to support local women</small></span></a></div></div></nav>
 </div></header>
 
 <main id="top">
 <div class="page" id="home"><div class="hero"><i class="blob b1"></i><i class="blob b2"></i><div class="wrap"><div class="hero-grid"><div class="hero-text">
-<p class="eyebrow">Shifa · Woking, Surrey</p>
-<h1>A safe, friendly place for women to feel supported, confident and connected</h1>
+<p class="eyebrow">Shifa Network · Woking, Surrey</p>
+<h1>A safe, friendly place for women to feel supported, confident and connected.</h1>
 <p>Shifa is a mental health and wellbeing community organisation offering information, advice, advocacy and support to ethnically diverse women in Woking and across Surrey.</p>
 <a class="btn" href="#contact">Get in touch</a><a class="btn alt" href="#services">Explore our services</a>
 <div class="pills"><span>📍 Woking</span><span>📍 Sheerwater</span><span>📍 Camberley</span><span>💻 Online</span><span>📞 By phone</span></div>
-</div><div class="hero-logo"><div class="logo-img big" role="img" aria-label="Shifa logo"></div></div></div></div></div>
-<div class="marquee" aria-hidden="true"><div class="track"><span>Drop-in support</span><span>✦</span><span>Listening service</span><span>✦</span><span>Advocacy</span><span>✦</span><span>ESOL</span><span>✦</span><span>Conversation class</span><span>✦</span><span>Life in the UK</span><span>✦</span><span>Driving theory</span><span>✦</span><span>Pilates</span><span>✦</span><span>Yoga</span><span>✦</span><span>Cycling</span><span>✦</span><span>Swimming</span><span>✦</span><span>Spiritual class</span><span>✦</span><span>Drop-in support</span><span>✦</span><span>Listening service</span><span>✦</span><span>Advocacy</span><span>✦</span><span>ESOL</span><span>✦</span><span>Conversation class</span><span>✦</span><span>Life in the UK</span><span>✦</span><span>Driving theory</span><span>✦</span><span>Pilates</span><span>✦</span><span>Yoga</span><span>✦</span><span>Cycling</span><span>✦</span><span>Swimming</span><span>✦</span><span>Spiritual class</span><span>✦</span></div></div>
+</div><div class="hero-logo"><a class="referral-cta" href="#contact">Referral and registration form</a><div class="logo-img big" role="img" aria-label="Shifa logo"></div></div></div></div></div>
+<div class="marquee" aria-hidden="true"><div class="track"><span>Drop-in support</span><span>✦</span><span>Listening service</span><span>✦</span><span>Advocacy</span><span>✦</span><span>ESOL</span><span>✦</span><span>Conversation class</span><span>✦</span><span>Pilates</span><span>✦</span><span>Drop-in support</span><span>✦</span><span>Listening service</span><span>✦</span><span>Advocacy</span><span>✦</span><span>ESOL</span><span>✦</span><span>Conversation class</span><span>✦</span><span>Pilates</span><span>✦</span></div></div>
 <section class="tint"><div class="wrap">
-<p class="eyebrow">What we do</p><h2>Support that fits into your life</h2>
-<p class="lead">We combine education, exercise and community spaces to help women build mental and emotional wellbeing, resilience, recovery and independence.</p>
+<p class="eyebrow eyebrow-lg">What we do</p><h2>Support through our services</h2>
+<p class="lead">We offer education, physical exercise and community spaces to socialise. To help women build their mental and emotional wellbeing, resilience and independence.</p>
 <div class="grid" style="margin-top:24px">
 <div class="card"><h3>🤝 Support &amp; advocacy</h3><p>Drop-ins and a listening service, plus information and advice when you need a hand.</p><a class="more" href="#services">Learn more →</a></div>
-<div class="card"><h3>📚 Learning</h3><p>ESOL, conversation practice, Life in the UK and driving theory test preparation.</p><a class="more" href="#services">Learn more →</a></div>
-<div class="card"><h3>🧘 Movement</h3><p>Pilates, yoga, aerobics, cycling and swimming in welcoming groups.</p><a class="more" href="#timetable">See timetable →</a></div>
+<div class="card"><h3>📚 Learning</h3><p>Skills for Life program.</p><a class="more" href="#services">Learn more →</a></div>
+<div class="card"><h3>🧘 Movement</h3><p>Friendly, affordable, locally based exercise classes.</p><a class="more" href="#timetable">See timetable →</a></div>
 </div></div></section>
 <section><div class="wrap">
-<p class="eyebrow">Getting started</p><h2>How to join Shifa</h2>
-<ol class="steps">
-<li><b>Get in touch</b><br>Email us your name and contact number.</li>
-<li><b>Have a friendly chat</b><br>We arrange a short phone conversation to get to know you.</li>
-<li><b>Find your group</b><br>We guide you to the class or support that suits you best.</li>
-<li><b>Book and attend</b><br>Sessions are for registered clients and are pre-booked.</li>
-</ol></div></section>
+<p class="eyebrow">Gallery</p><h2>The Gallery</h2>
+<p class="lead">A look at life at Shifa — photos from our classes, drop-ins and events. Check back as we add more.</p>
+<!-- Each tile's data-images is a comma-separated list; add as many photo paths as you like to show more in the lightbox -->
+<div class="gallery">
+<button class="gphoto" type="button" data-images="images/gallery/1-1.jpg,images/gallery/1-2.jpg"><span aria-hidden="true">📷</span></button>
+<button class="gphoto" type="button" data-images="images/gallery/2-1.jpg,images/gallery/2-2.jpg"><span aria-hidden="true">📷</span></button>
+<button class="gphoto" type="button" data-images="images/gallery/3-1.jpg,images/gallery/3-2.jpg"><span aria-hidden="true">📷</span></button>
+<button class="gphoto" type="button" data-images="images/gallery/4-1.jpg,images/gallery/4-2.jpg"><span aria-hidden="true">📷</span></button>
+<button class="gphoto" type="button" data-images="images/gallery/5-1.jpg,images/gallery/5-2.jpg"><span aria-hidden="true">📷</span></button>
+<button class="gphoto" type="button" data-images="images/gallery/6-1.jpg,images/gallery/6-2.jpg"><span aria-hidden="true">📷</span></button>
+</div>
+<div id="lightbox" class="lightbox" aria-hidden="true">
+<div class="lightbox-inner">
+<button class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+<button class="lb-btn lb-prev" type="button" aria-label="Previous photo">‹</button>
+<img class="lb-img" src="" alt="">
+<button class="lb-btn lb-next" type="button" aria-label="Next photo">›</button>
+<div class="lb-dots" aria-label="Photo selection"></div>
+</div></div>
+</div></section>
 <div class="band"><div class="wrap"><h2>You are welcome here</h2><p>Come and take the first step, whenever you're ready.</p><a class="btn" href="#contact">Contact Shifa</a></div></div>
 </div>
 
@@ -169,13 +233,21 @@ body.home .topbar{display:block;animation:pageIn .5s both}
 <div class="card"><h3>Community spaces</h3><p>Safe, supportive places to meet others and feel understood.</p></div>
 </div>
 <h3 class="sub">Where we work</h3>
-<p>Services run in Maybury and Sheerwater (Woking), Camberley (Surrey Heath), and remotely online and by telephone. Our base is Trinity Methodist Church, Brewery Road, Woking, GU21 4LH.</p>
+<p>Services run in Woking and Camberley (Surrey Heath), aswell as remotely online and by telephone.</p>
 <h3 class="sub">Our story</h3>
 <div class="tl">
-<div><b>Early years</b><br>Shifa was delivered alongside Woking Mind as a wellbeing project for Asian women.</div>
-<div><b>August 2022</b><br>Woking Mind's services and Shifa moved to Catalyst Support, keeping the same location and staff.</div>
-<div><b>Today</b><br>Shifa Network operates independently as a Community Interest Company (CIC).</div>
-</div></div></section>
+<div><span class="tl-date">The beginning · Woking</span><b>A wellbeing project</b><p>Shifa began as a project focused on Asian women's wellbeing in Woking in 2003 and rooted in local community support.</p></div>
+<div><span class="tl-date">August 2022</span><b>A new home with Catalyst Support</b><p>Shifa moved to Catalyst Support. The move kept the same location and staff, providing continuity for the people already using the service.</p></div>
+<div><span class="tl-date">After the Catalyst period</span><b>Becoming an independent CIC</b><p>Shifa Network became an independent Community Interest Company, continuing as a community organisation in its own right.</p></div>
+<div><span class="tl-date">Today</span><b>Supporting women across Woking and Surrey</b><p>Shifa now supports ethnically diverse women more widely through information, advice, advocacy, learning, exercise and community spaces in Woking, Camberley and remotely.</p></div>
+</div>
+<h3 class="sub">Partners &amp; community</h3>
+<p class="lead">Shifa works alongside local organisations to help women get the support they need.</p>
+<div class="grid" style="margin-top:20px">
+<div class="card"><h3>Woking Soroptimists</h3><p>Help Shifa's clients improve their English and build confidence speaking in all kinds of settings, especially women new to Woking.</p></div>
+<div class="card"><h3>Directories</h3><p>Shifa is listed on Connect to Support Surrey and the Cancer Care Map for ethnically diverse women in Woking and Camberley.</p></div>
+</div>
+</div></section>
 
 <section class="page tint" id="services"><div class="wrap">
 <p class="eyebrow">Services</p><h2>What we offer</h2>
@@ -185,90 +257,85 @@ body.home .topbar{display:block;animation:pageIn .5s both}
 <div class="card"><h3>Drop-in support</h3><p>Informal sessions in Woking and Camberley where you can come along, talk and get help.</p></div>
 <div class="card"><h3>Listening service</h3><p>A space in Woking to be heard without judgement.</p></div>
 <div class="card"><h3>Information, advice &amp; advocacy</h3><p>Help finding the right services and having your voice heard.</p></div>
-<div class="card"><h3>Spiritual class</h3><p>A weekly online session for reflection and wellbeing.</p></div>
 </div>
 <h3 class="sub">Learning</h3>
 <div class="grid">
 <div class="card"><h3>ESOL</h3><p>English classes from pre-entry to Entry Level 1 and 2, in Woking and Camberley.</p></div>
 <div class="card"><h3>Conversation class</h3><p>Build confidence speaking English in everyday situations.</p></div>
-<div class="card"><h3>Life in the UK</h3><p>Test preparation, including A1 and B2 level sessions.</p></div>
-<div class="card"><h3>Driving theory</h3><p>Practice sessions for the driving theory test.</p></div>
+<div class="card"><h3>Life in the UK</h3><p>Test preparation, including A1 and B2 level sessions.</p><span class="service-status">Coming soon</span></div>
+<div class="card"><h3>Driving theory</h3><p>Practice sessions for the driving theory test.</p><span class="service-status">Coming soon</span></div>
 </div>
 <h3 class="sub">Movement</h3>
 <div class="grid">
 <div class="card"><h3>Pilates</h3><p>Chair, low impact and moderate impact classes.</p></div>
-<div class="card"><h3>Yoga &amp; aerobics</h3><p>Gentle classes in Camberley.</p></div>
-<div class="card"><h3>Cycling</h3><p>Beginners and improvers sessions, plus group rides, from Sheerwater.</p></div>
-<div class="card"><h3>Swimming</h3><p>Friday evening sessions at Goldsworth Primary School, Woking.</p></div>
+<div class="card"><h3>Yoga &amp; aerobics</h3><p>Gentle classes in Camberley.</p><span class="service-status">Coming soon</span></div>
+<div class="card"><h3>Cycling</h3><p>Beginners and improvers sessions, plus group rides, from Sheerwater.</p><span class="service-status">Coming soon</span></div>
+<div class="card"><h3>Swimming</h3><p>Friday evening sessions at Goldsworth Primary School, Woking.</p><span class="service-status">Coming soon</span></div>
 </div>
 <p class="note">Session details reflect Shifa's last published timetable. Please check the current offer with the team.</p>
 </div></section>
 
 <section class="page" id="timetable"><div class="wrap">
-<h2>Classes timetable</h2>
-<p>New to Shifa? We'll first arrange a short telephone conversation to get to know you and guide you to the most suitable group. Sessions are for registered clients and must be pre-booked.</p>
-<div class="scroll"><table>
-<tr><th>Day</th><th>Class</th><th>Time</th><th>Where</th></tr>
-<tr><td>Mon</td><td>Chair Pilates</td><td>10:00–11:00</td><td>Zoom</td></tr>
-<tr><td>Mon</td><td>Life in the UK Test Preparation</td><td>10:00–11:30</td><td>Zoom</td></tr>
-<tr><td>Mon</td><td>Life in the UK: A1 &amp; B2 Test Prep</td><td>12:00–13:00</td><td>Zoom</td></tr>
-<tr><td>Mon</td><td>Low Impact Pilates</td><td>12:30–13:30</td><td>Sheerwater</td></tr>
-<tr><td>Mon</td><td>Moderate Impact Pilates</td><td>13:30–14:30</td><td>Sheerwater</td></tr>
-<tr><td>Tue</td><td>Conversation Class</td><td>10:00–11:00</td><td>Online</td></tr>
-<tr><td>Tue</td><td>Spiritual Class</td><td>10:00–11:30</td><td>Zoom</td></tr>
-<tr><td>Tue</td><td>Cycling: Beginners &amp; Improvers</td><td>10:00–12:15</td><td>Sheerwater</td></tr>
-<tr><td>Tue</td><td>Cycling (Rides)</td><td>12:15–14:15</td><td>Sheerwater</td></tr>
-<tr><td>Wed</td><td>Low Impact Aerobics</td><td>12:00–12:45</td><td>Camberley</td></tr>
-<tr><td>Wed</td><td>ESOL</td><td>13:30–15:30</td><td>Camberley</td></tr>
-<tr><td>Thu</td><td>Drop-in Support</td><td>10:00–12:00</td><td>Woking &amp; Camberley</td></tr>
-<tr><td>Thu</td><td>ESOL Entry Level 1 &amp; 2</td><td>10:00–12:00</td><td>Woking</td></tr>
-<tr><td>Thu</td><td>Yoga</td><td>11:00–12:00</td><td>Camberley</td></tr>
-<tr><td>Fri</td><td>Listening Service</td><td>10:00–12:00</td><td>Woking</td></tr>
-<tr><td>Fri</td><td>ESOL Pre-entry Level</td><td>10:00–12:00</td><td>Woking</td></tr>
-<tr><td>Fri</td><td>Drop-in Support</td><td>10:00–12:00</td><td>Woking</td></tr>
-<tr><td>Fri</td><td>Driving Theory Test Practice</td><td>11:15–12:30</td><td>Zoom</td></tr>
-<tr><td>Fri</td><td>Swimming</td><td>18:30–20:30</td><td>Goldsworth Primary School</td></tr>
-</table></div>
-<p class="note">This timetable was last published in 2024, when Shifa was run by Catalyst Support. Since Shifa became an independent CIC, sessions may have changed, so please confirm with the team before attending.</p>
+<h2>Timetable coming soon</h2>
+<p class="lead">We’re updating the timetable. Please contact Shifa to confirm which sessions are currently available.</p>
+<a class="btn" href="#contact">Contact Shifa</a>
 </div></section>
-
-<section class="page tint" id="partners"><div class="wrap">
-<p class="eyebrow">Together</p><h2>Partners &amp; community</h2>
-<p class="lead">Shifa works alongside local organisations to help women get the support they need.</p>
-<div class="grid" style="margin-top:20px">
-<div class="card"><h3>Woking Soroptimists</h3><p>Help Shifa's clients improve their English and build confidence speaking in all kinds of settings, especially women new to Woking.</p></div>
-<div class="card"><h3>Catalyst Support</h3><p>A Surrey mental health and wellbeing charity that delivered Shifa from August 2022 before it became an independent CIC.</p></div>
-<div class="card"><h3>Woking Mind</h3><p>Shifa's earlier home before services transferred to Catalyst.</p></div>
-<div class="card"><h3>Directories</h3><p>Shifa is listed on Connect to Support Surrey and the Cancer Care Map for ethnically diverse women in Woking and Camberley.</p></div>
-</div></div></section>
 
 <section class="page" id="contact"><div class="wrap">
 <p class="eyebrow">Contact</p><h2>Contact us</h2>
 <p class="lead">Email us your name and contact number and we will arrange a short phone conversation to find the right group for you.</p>
+<h3 class="sub">Forms</h3>
+<div class="grid form-options">
+<div class="card"><h3>Referral form</h3><p>The referral form document will be added here soon. Once completed, use the button below to prepare an email and attach the form.</p><span class="form-status">Document coming soon</span><br><a class="btn alt" href="mailto:info.shifawoking@gmail.com?subject=Completed%20referral%20form&amp;body=Hello%20Shifa%2C%0A%0AI%20am%20sending%20my%20completed%20referral%20form.%20I%20will%20attach%20it%20to%20this%20email%20before%20sending.%0A">Email completed form</a></div>
+<div class="card"><h3>Registration form</h3><p>The registration form document will be added here soon. Once completed, use the button below to prepare an email and attach the form.</p><span class="form-status">Document coming soon</span><br><a class="btn alt" href="mailto:info.shifawoking@gmail.com?subject=Completed%20registration%20form&amp;body=Hello%20Shifa%2C%0A%0AI%20am%20sending%20my%20completed%20registration%20form.%20I%20will%20attach%20it%20to%20this%20email%20before%20sending.%0A">Email completed form</a></div>
+</div>
 <br>
 <div class="grid">
 <div class="card"><h3>Phone</h3><p><a href="tel:07533495288">07533 495 288</a></p></div>
 <div class="card"><h3>Email</h3><p><a href="mailto:info.shifawoking@gmail.com">info.shifawoking@gmail.com</a></p></div>
-<div class="card"><h3>Base</h3><p>Trinity Methodist Church, Brewery Road, Woking, Surrey, GU21 4LH</p></div>
 <div class="card"><h3>Social</h3><p><a href="https://www.facebook.com/ShifaWellbeing">Facebook</a> · <a href="https://www.instagram.com/woking.shifanetwork/">Instagram</a></p></div>
 </div>
 <h3 class="sub">Send us a message</h3>
 <form id="cf" class="cform" novalidate>
 <div class="row"><label>Your name<input id="cn" autocomplete="name"></label><label>Email or phone number<input id="ce" autocomplete="email"></label></div>
-<label>What is this about?<select id="cs"><option>I'd like to join Shifa</option><option>A question about classes</option><option>Something else</option></select></label>
+<label>What is this about?<select id="cs"><option>I'd like to join Shifa</option><option>A question about classes</option><option>Volunteering</option><option>Donations</option><option>Something else</option></select></label>
 <label>Your message<textarea id="cm" rows="5"></textarea></label>
 <label class="chk"><input type="checkbox" id="cc"> I'm happy for Shifa to contact me using these details.</label>
 <button class="btn" type="submit">Send message</button>
 <p id="cmsg" role="status"></p>
 </form>
 <p class="note">Please don't include sensitive personal or medical details in a first message. Your message opens in your email app, addressed to Shifa, so you can review it before sending.</p>
-<br>
-<p class="note">Older listings for Shifa show other phone numbers and the address admin@shifanetwork.org.uk from before Shifa became independent. Those may be out of date, so please use the details above.</p>
+</div></section>
+
+<section class="page" id="donate"><div class="wrap">
+<p class="eyebrow">Get involved</p><h2>Donate</h2>
+<p class="lead">Shifa Network is a Community Interest Company — every donation helps us keep drop-in support, classes and advocacy free for ethnically diverse women in Woking and Camberley.</p>
+<div class="grid">
+<div class="card"><h3>Bank transfer</h3><span class="service-status">Coming soon</span></div>
+</div>
+<p class="note">We don't currently take online card payments. Please contact us directly and we'll arrange the best way for you to give.</p>
+<a class="btn" href="#contact">Contact us to donate</a>
+</div></section>
+
+<section class="page tint" id="volunteer"><div class="wrap">
+<p class="eyebrow">Get involved</p><h2>Volunteer</h2>
+<p class="lead">Volunteers are at the heart of Shifa. Whether you have an hour a week or a particular skill to share, there's a role for you.</p>
+<div class="grid">
+<div class="card"><h3>Class &amp; event helpers</h3><p>Support Pilates, yoga, cycling, swimming and other sessions on the ground.</p></div>
+<div class="card"><h3>Admin &amp; fundraising</h3><p>Lend a hand with office tasks, events or raising funds for Shifa Network.</p></div>
+</div>
+<p class="note">All volunteer roles working with clients require a short induction and, where relevant, a DBS check.</p>
+<a class="btn" href="#contact">Register your interest</a>
+</div></section>
+
+<section class="page tint" id="testimonials"><div class="wrap">
+<p class="eyebrow">Testimonials</p><h2>Stories from our community</h2>
+<p class="lead">We’re preparing this space to share feedback from people who have used Shifa’s support. Stories will be added here with their permission.</p>
 </div></section>
 </main>
 
 <footer><div class="wrap">
-<p>© Shifa Network CIC, Woking, Surrey. This is an unofficial website draft compiled from publicly available information. Please verify details with Shifa directly.</p>
+<p>© Shifa Network CIC, Woking, Surrey.</p>
 </div></footer>
 <script>
 (function(){
@@ -281,6 +348,60 @@ links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+i
 window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',show);show();
+})();
+</script>
+<script>
+(function(){
+var lb=document.getElementById('lightbox');if(!lb)return;
+var img=lb.querySelector('.lb-img'),dots=lb.querySelector('.lb-dots');
+var imgs=[],i=0;
+function render(){
+img.src=imgs[i];
+dots.querySelectorAll('.lb-dot').forEach(function(dot,index){
+dot.classList.toggle('active',index===i);
+dot.setAttribute('aria-current',index===i?'true':'false');
+});
+}
+function open(list,start){
+imgs=list;i=start;dots.replaceChildren();
+imgs.forEach(function(_,index){
+var dot=document.createElement('button');dot.type='button';dot.className='lb-dot';
+dot.setAttribute('aria-label','Show photo '+(index+1));
+dot.addEventListener('click',function(){i=index;render()});dots.appendChild(dot);
+});
+render();lb.classList.add('open');lb.setAttribute('aria-hidden','false')
+}
+function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');img.src=''}
+function next(){i=(i+1)%imgs.length;render()}
+function prev(){i=(i-1+imgs.length)%imgs.length;render()}
+document.querySelectorAll('.gphoto').forEach(function(b){
+var list=(b.dataset.images||'').split(',').map(function(s){return s.trim()}).filter(Boolean);
+if(!list.length)return;
+b.addEventListener('click',function(){open(list,0)});
+});
+lb.querySelector('.lb-close').addEventListener('click',close);
+lb.querySelector('.lb-next').addEventListener('click',next);
+lb.querySelector('.lb-prev').addEventListener('click',prev);
+lb.addEventListener('click',function(e){if(e.target===lb)close()});
+document.addEventListener('keydown',function(e){
+if(!lb.classList.contains('open'))return;
+if(e.key==='Escape')close();if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();
+});
+})();
+</script>
+<script>
+(function(){
+var dd=document.querySelector('.dropdown'),btn=dd&&dd.querySelector('.dropbtn');
+if(!dd||!btn)return;
+function close(){dd.classList.remove('open');btn.setAttribute('aria-expanded','false')}
+btn.addEventListener('click',function(e){
+e.stopPropagation();
+var open=dd.classList.toggle('open');
+btn.setAttribute('aria-expanded',open?'true':'false');
+});
+document.addEventListener('click',function(e){if(!dd.contains(e.target))close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+dd.querySelectorAll('.dropdown-content a').forEach(function(a){a.addEventListener('click',close)});
 })();
 </script>
 <script>
