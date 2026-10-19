@@ -1,0 +1,21 @@
+services:
+  shifa-web:
+    build: .
+    container_name: shifa-web
+    ports:
+      - "8080:8000"
+    volumes:
+      - C:/Projects/Shifanetwork/src/ShifaNetwork:/app
+    restart: unless-stopped
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: npm 
+    ports: 
+      - "80:80"
+      - "443:443"
+      - "81:81"
+    volumes:
+      - ./npm/data:/data
+      - ./npm/letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
+      

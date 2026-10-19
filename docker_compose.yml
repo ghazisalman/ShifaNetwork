@@ -1,9 +1,0 @@
-services:
-  shifa-web:
-    build: .
-    container_name: shifa-web
-    ports:
-      - "8080:8000"
-    volumes:
-      - .:/app
-    restart: unless-stopped
